@@ -19,8 +19,8 @@ int		main(int ac, char **av)
 		stackB = NULL;
 		if (checkInput(av))
 			return (printError(), 1);
-		if (fillStackA(ac, stackA))
-			return (1);
+		// if (fillStackA(ac, stackA))
+		// 	return (1);
 		/*
 		replaceValue(stackA);
 		replace value with index
@@ -32,6 +32,7 @@ int		main(int ac, char **av)
 		
 		algo
 		*/
+		return (0);
 	}
-	return (1)
+	return (1);
 }

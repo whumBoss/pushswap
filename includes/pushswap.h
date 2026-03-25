@@ -23,7 +23,7 @@ bool	checkInput(char **av);
 bool	checkArg(char **arg);
 bool	ftIsDigit(char **arg);
 bool	checkSign(char **arg);
-bool	checkLimit(char **arg);
+bool	checkLimits(char **arg);
 
 //Fill.c
 bool	fillStackA(int ac, t_stack *stackA);

@@ -10,4 +10,5 @@ bool	fillStackA(int ac, t_stack *stackA)
 		if (verif_doublon(stackA))
 			return(free tout ici, 1)
 	*/
+	return (0);
 }

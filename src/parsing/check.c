@@ -13,7 +13,7 @@ checkLimits
 atoi et verif si le nb <= INTMAX && nb >= INTMIN
 */
 
-bool	checkLimit(char **arg)
+bool	checkLimits(char **arg)
 {
 	int		i;
 	int		value;
