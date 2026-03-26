@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 17:34:19 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/26 23:13:31 by wihumeau         ###   ########.fr       */
+/*   Created: 2026/03/26 19:56:10 by wihumeau          #+#    #+#             */
+/*   Updated: 2026/03/26 23:14:58 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-/*bool	verif_doublon(t_stack *stackA)
+void	testFillStack(t_stack *stackA)
 {
-	
-}*/
-/*
-	pushback la liste chainee en boucle avec av[i]
-	dans push back je creatnode et je atoi de av[i]
-	pour a la fin avoir une liste chainee qui contient des int bases sur les arg recu en input
-*/
-
-bool	fillStackA(char **av, t_stack **stackA)
-{
-	int	i;
-
-	i = 0;
-	while (av[i])
+	printf("------- Verif struct -------\n\n");
+	while (stackA->next != NULL)
 	{
-		pushback(av[i], stackA);
-		i++;
+		stackA = stackA->next;
+		printf("NODE\n");
+		printf("node->value = %d\n", stackA->value);
+		printf("node->next = %p\n", stackA->next);
+		printf("node's adress = %p\n", &stackA);
 	}
-	testFillStack(*stackA);
-	//if (verif_doublon(stackA))
-	//	return(free tout ici, 1)
-	return (0);
 }

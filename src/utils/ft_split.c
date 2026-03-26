@@ -6,12 +6,11 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 19:34:31 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/02/23 16:39:27 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/26 20:23:51 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "../../includes/pushswap.h"
 
 static void	ft_free_tab(char **tab, int j)
 {

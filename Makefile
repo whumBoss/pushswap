@@ -20,20 +20,23 @@ CPPFLAGS = -I. -Includes...
 # ===== Source Layout =====
 MAIN_DIR = src/
 PARSING_DIR = src/parsing/
-EXEC_DIR = src/exec/
+# EXEC_DIR = src/exec/
 UTILS_DIR = src/utils/
+TEST_DIR = src/test/
 
 MAIN_FILES = main.c
-PARSING_FILES = parsing.c path.c
-EXEC_FILES = exec.c
-UTILS_FILES = free.c output.c utils.c close.c
+PARSING_FILES = check.c fill.c
+# EXEC_FILES = exec.c
+UTILS_FILES = ft_atoi.c ft_split.c list.c
+TEST_FILES = test.c
 
 # ===== Source / Object / Dependency Lists =====
+# $(addprefix $(EXEC_DIR),$(EXEC_FILES))
 SRCS = \
 	$(addprefix $(MAIN_DIR),$(MAIN_FILES)) \
 	$(addprefix $(PARSING_DIR),$(PARSING_FILES)) \
-	$(addprefix $(EXEC_DIR),$(EXEC_FILES)) \
-	$(addprefix $(UTILS_DIR),$(UTILS_FILES))
+	$(addprefix $(UTILS_DIR),$(UTILS_FILES)) \
+	$(addprefix $(TEST_DIR), $(TEST_FILES))
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)
@@ -69,13 +72,13 @@ re: fclean all
 
 # ===== Test Helpers =====
 test: $(NAME)
-	./$(NAME) Makefile ls wc tests/outfile
+	./$(NAME) 1 13 54 34
 
-hardtest: $(NAME)
-	./$(NAME) Makefile "ls -l -a" wc tests/outfile
+signtest: $(NAME)
+	./$(NAME) 34 -54 +12 -1
 
-noinfile: $(NAME)
-	./$(NAME) Makefiled "ls -l -a" wc tests/outfile
+wrongsign: $(NAME)
+	./$(NAME) 12 ++32 - 45
 
 # ===== Auto Dependencies =====
 -include $(DEPS)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/26 17:35:03 by wihumeau          #+#    #+#             */
+/*   Updated: 2026/03/26 23:12:17 by wihumeau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/pushswap.h"
 /*
 la fonction check args
@@ -19,8 +31,8 @@ int		main(int ac, char **av)
 		stackB = NULL;
 		if (checkInput(av))
 			return (printError(), 1);
-		// if (fillStackA(ac, stackA))
-		// 	return (1);
+		if (fillStackA(av, &stackA))
+			return (1);
 		/*
 		replaceValue(stackA);
 		replace value with index
@@ -34,5 +46,6 @@ int		main(int ac, char **av)
 		*/
 		return (0);
 	}
+	printf("error expected 2 arg\n");
 	return (1);
 }

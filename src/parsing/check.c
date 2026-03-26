@@ -1,4 +1,16 @@
-#include "pushswap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/26 17:34:56 by wihumeau          #+#    #+#             */
+/*   Updated: 2026/03/26 21:53:00 by wihumeau         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/pushswap.h"
 
 /*
 taper les 3 fonctions de check
@@ -13,22 +25,17 @@ checkLimits
 atoi et verif si le nb <= INTMAX && nb >= INTMIN
 */
 
-bool	checkLimits(char **arg)
+bool	checkLimits(char *arg)
 {
-	int		i;
-	int		value;
+	long		value;
 
-	i = 0;
-	while (arg[i])
-	{
-		value = ft_atoi(arg[i]);
-		if (value > INTMAX || value < INTMIN)
-			return (1);
-	}
+	value = ft_atoi(arg);
+	if (value > INTMAX || value < INTMIN)
+		return (1);
 	return (0);
 }
 
-bool	checkSign(char **arg)
+bool	checkSign(char *arg)
 {
 	int		i;
 
@@ -37,7 +44,7 @@ bool	checkSign(char **arg)
 	{
 		if (arg[i] == '-' || arg[i] == '+')
 		{
-			if (arg[i + 1] == NULL)
+			if (arg[i + 1] == '\0')
 				return (1);
 			if (arg[i + 1] == '-' || arg[i + 1] == '+')
 				return (1);
@@ -49,7 +56,7 @@ bool	checkSign(char **arg)
 	return (0);
 }
 
-bool	ftIsDigit(char **arg)
+bool	ftIsDigit(char *arg)
 {
 	int		i;
 
@@ -58,18 +65,26 @@ bool	ftIsDigit(char **arg)
 	{
 		if ((arg[i] >= 48 && arg[i] <= 57) || (arg[i] == '-' || arg[i] == '+'))
 			return (0);
+		i++;
 	}
 	return (1);
 }
 
 bool	checkArg(char **arg)
 {
-	if (ftIsDigit(arg))
-		return (1);
-	if (checkSign(arg))
-		return (1);
-	if (checkLimits(arg))
-		return (1);
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		if (ftIsDigit(arg[i]))
+			return (1);
+		if (checkSign(arg[i]))
+			return (1);
+		if (checkLimits(arg[i]))
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
@@ -81,7 +96,7 @@ bool	checkInput(char **av)
 	i = 1;
 	while (av[i])
 	{
-		arg = ft_split(av[i], " ");
+		arg = ft_split(av[i], ' ');
 		if (checkArg(arg))
 			return (1);
 		i++;
