@@ -6,11 +6,16 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:19 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/27 21:01:03 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/27 22:34:16 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
+
+int	replace_value(t_stack **stackA)
+{
+	
+}
 
 	//j'ai besoin de parcourir la liste pour verifier qu'il n'y a pas de doublon
 	//donc j'envoie un pointeur de la list pour pouvoir la parcourir sans modifier le contenue
@@ -30,30 +35,26 @@ int	verif_doublon(t_stack *stackA)
 	t_stack	*copystack;
 	int		buffer;
 	
+	stackA = stackA->next;
+	buffer = stackA->value;
 	copystack = stackA;
-	copystack = copystack->next;
-	buffer = copystack->value;
-	while (copystack->next != NULL && )
+	while (copystack->next != NULL)
 	{
-		printf("\n\n--- NOUVELLE ITERATION ---\n\n");
-		if (buffer != copystack->value)
-		{
-			while (buffer != copystack->value)
-				copystack = copystack->next;
-			copystack = copystack->next;
-			buffer = copystack->value;
-		}
-		printf("buffer = %d\n", buffer);
+		//printf("\n\n--- NOUVELLE ITERATION ---\n\n");
+		//printf("buffer = %d\n", buffer);
 		while (copystack->next != NULL)
 		{
 			copystack = copystack->next;
-			printf("copystack->value = %d\n", copystack->value);
+			//printf("copystack->value = %d\n", copystack->value);
 			if (buffer == copystack->value)
 				return (1);
 		}
 		copystack = stackA;
+		while (buffer != copystack->value)
+			copystack = copystack->next;
 		copystack = copystack->next;
-		printf("\ncopystack->value at the end = %d\n", copystack->value);
+		buffer = copystack->value;
+		//printf("\ncopystack->value at the end = %d\n", copystack->value);
 	}
 	return (0);
 }
@@ -77,6 +78,7 @@ int	fillStackA(char **av, t_stack **stackA)
 	//testFillStack(*stackA);
 	if (verif_doublon(*stackA))
 		return(1);
+	replace_value(stackA);
 	return (0);
 }
 
