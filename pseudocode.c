@@ -26,6 +26,8 @@ puis on vas les trier
 
 	EXEC
 
+coder tout les mouvements
+
 Un algo pour liste de 2
 un algo pour liste de 3
 un algo pour liste de 5

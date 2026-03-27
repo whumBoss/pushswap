@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:56 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/26 21:53:00 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/27 15:57:02 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ checkLimits
 atoi et verif si le nb <= INTMAX && nb >= INTMIN
 */
 
-bool	checkLimits(char *arg)
+int	checkLimits(char *arg)
 {
 	long		value;
 
@@ -35,7 +35,7 @@ bool	checkLimits(char *arg)
 	return (0);
 }
 
-bool	checkSign(char *arg)
+int	checkSign(char *arg)
 {
 	int		i;
 
@@ -56,7 +56,7 @@ bool	checkSign(char *arg)
 	return (0);
 }
 
-bool	ftIsDigit(char *arg)
+int	ftIsDigit(char *arg)
 {
 	int		i;
 
@@ -70,7 +70,7 @@ bool	ftIsDigit(char *arg)
 	return (1);
 }
 
-bool	checkArg(char **arg)
+int	checkArg(char **arg)
 {
 	int	i;
 
@@ -88,7 +88,7 @@ bool	checkArg(char **arg)
 	return (0);
 }
 
-bool	checkInput(char **av)
+int	checkInput(char **av)
 {
 	int		i;
 	char	**arg;

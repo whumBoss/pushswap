@@ -4,7 +4,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <stdbool.h>
 
 # define INTMIN -2147483648
 # define INTMAX 2147483647
@@ -22,14 +21,15 @@ typedef struct s_stack
 void	printError(void);
 
 //Check.c
-bool	checkInput(char **av);
-bool	checkArg(char **arg);
-bool	ftIsDigit(char *arg);
-bool	checkSign(char *arg);
-bool	checkLimits(char *arg);
+int	checkInput(char **av);
+int	checkArg(char **arg);
+int	ftIsDigit(char *arg);
+int	checkSign(char *arg);
+int	checkLimits(char *arg);
 
 //Fill.c
-bool	fillStackA(char **av, t_stack **stackA);
+int	fillStackA(char **av, t_stack **stackA);
+int	verif_doublon(t_stack *stackA);
 
 //List.c
 t_stack	*create_node(char *arg);
