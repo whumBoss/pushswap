@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:19 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/27 23:48:11 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/28 00:14:27 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	fillStackA(char **av, t_stack **stackA)
 		while (arg[j])
 		{
 			if (pushback(arg[j], stackA))
-				return (1);
+				return (free_stack(stackA), 1);
 			j++;
 		}
 		j = 0;
