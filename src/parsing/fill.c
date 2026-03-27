@@ -6,16 +6,16 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:19 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/27 22:34:16 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/27 23:48:11 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-int	replace_value(t_stack **stackA)
-{
+// int	replace_value(t_stack **stackA)
+// {
 	
-}
+// }
 
 	//j'ai besoin de parcourir la liste pour verifier qu'il n'y a pas de doublon
 	//donc j'envoie un pointeur de la list pour pouvoir la parcourir sans modifier le contenue
@@ -40,12 +40,12 @@ int	verif_doublon(t_stack *stackA)
 	copystack = stackA;
 	while (copystack->next != NULL)
 	{
-		//printf("\n\n--- NOUVELLE ITERATION ---\n\n");
-		//printf("buffer = %d\n", buffer);
+		// printf("\n\n--- NOUVELLE ITERATION ---\n\n");
+		// printf("buffer = %d\n", buffer);
 		while (copystack->next != NULL)
 		{
 			copystack = copystack->next;
-			//printf("copystack->value = %d\n", copystack->value);
+			// printf("copystack->value = %d\n", copystack->value);
 			if (buffer == copystack->value)
 				return (1);
 		}
@@ -54,7 +54,7 @@ int	verif_doublon(t_stack *stackA)
 			copystack = copystack->next;
 		copystack = copystack->next;
 		buffer = copystack->value;
-		//printf("\ncopystack->value at the end = %d\n", copystack->value);
+		// printf("\ncopystack->value at the end = %d\n", copystack->value);
 	}
 	return (0);
 }
@@ -67,18 +67,30 @@ int	verif_doublon(t_stack *stackA)
 
 int	fillStackA(char **av, t_stack **stackA)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	**arg;
 
 	i = 0;
+	j = 0;
 	while (av[i])
 	{
-		pushback(av[i], stackA);
+		arg = ft_split(av[i], ' ');
+		if (!arg)
+			return (printError("arg allocation gone wrong (split)"), 1);
+		while (arg[j])
+		{
+			if (pushback(arg[j], stackA))
+				return (1);
+			j++;
+		}
+		j = 0;
 		i++;
 	}
 	//testFillStack(*stackA);
 	if (verif_doublon(*stackA))
-		return(1);
-	replace_value(stackA);
+		return (printError("args are identical values"), 1);
+	// replace_value(stackA);
 	return (0);
 }
 

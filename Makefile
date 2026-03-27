@@ -3,18 +3,18 @@ NAME = pushswap
 
 # ===== Directories =====
 # LIBFT_DIR = libft/
-# PRINTF_DIR = includes/ft_print/
+PRINTF_DIR = includes/ft_printf/
 OBJ_DIR = objs
 
 # ===== Libraries =====
 # LIBFT = $(LIBFT_DIR)libft.a
-# PRINTF = $(PRINTF_DIR)libftprintf.a
+PRINTF = $(PRINTF_DIR)libftprintf.a
 
 # ===== Toolchain =====
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-# CPPFLAGS = -I. -Iincludes -Iincludes/ft_print -Ilibft -MMD -MP
-CPPFLAGS = -I. -Includes... 
+CPPFLAGS = -I. -Includes -Includes/ft_print -Ilibft -MMD -MP
+# CPPFLAGS = -I. -Includes... 
 
 
 # ===== Source Layout =====

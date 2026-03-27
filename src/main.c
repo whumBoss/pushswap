@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:35:03 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/27 17:07:55 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/27 23:43:37 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 la fonction check args
 la fonction printError juste write la sortie d'erreur
 */
-void	printError(void)
+void	printError(char *str)
 {
-	write(1, "Error\n", 6);
+	ft_printf("Pushswap error : %s\n", str);
 }
 
 int		main(int ac, char **av)
@@ -30,9 +30,9 @@ int		main(int ac, char **av)
 		stackA = NULL;
 		stackB = NULL;
 		if (checkInput(av))
-			return (printError(), 1);
+			return (1);
 		if (fillStackA(av, &stackA))
-			return (printError(), 1);
+			return (1);
 		/*
 		replaceValue(stackA);
 		replace value with index
@@ -46,6 +46,6 @@ int		main(int ac, char **av)
 		*/
 		return (0);
 	}
-	printf("error expected 2 arg\n");
+	printError("expected 2 arg");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:07 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/26 23:13:08 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/27 23:41:38 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,23 @@ t_stack	*create_node(char *arg)
 
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
-		return (printError (), NULL);
+		return (printError ("node allocation gone wrong"), NULL);
 	new_node->value = atoi(arg);
-	//new_node->prev = NULL;
 	new_node->next = NULL;
 	return(new_node);
 }
 
-void	pushback(char *arg, t_stack **head)
+int	pushback(char *arg, t_stack **head)
 {
 	t_stack	*new_node;
 
 	new_node = create_node(arg);
+	if (!new_node)
+		return (1);
 	if (!*head)
 	{
 		*head = new_node;
-		return;
+		return (0);
 	}
 	t_stack	*current;
 	
@@ -41,6 +42,7 @@ void	pushback(char *arg, t_stack **head)
 	while (current->next != NULL)
 		current = current->next;
 	current->next = new_node;
+	return (0);
 }
 	/*
 	si list doublement chainee

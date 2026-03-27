@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:56 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/27 15:57:02 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/27 23:46:48 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ int	checkArg(char **arg)
 	while (arg[i])
 	{
 		if (ftIsDigit(arg[i]))
-			return (1);
+			return (printError("arg is not digit"), 1);
 		if (checkSign(arg[i]))
-			return (1);
+			return (printError("signe alone or to many signes"), 1);
 		if (checkLimits(arg[i]))
-			return (1);
+			return (printError("arg is over or under the limits"), 1);
 		i++;
 	}
 	return (0);
@@ -97,6 +97,8 @@ int	checkInput(char **av)
 	while (av[i])
 	{
 		arg = ft_split(av[i], ' ');
+		if (!arg)
+			return (printError("arg allocation gone wrong (split)"), 1);
 		if (checkArg(arg))
 			return (1);
 		i++;

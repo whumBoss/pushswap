@@ -4,6 +4,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "ft_printf/ft_printf.h"
 
 # define INTMIN -2147483648
 # define INTMAX 2147483647
@@ -18,7 +19,7 @@ typedef struct s_stack
 } t_stack;
 
 //Main.c
-void	printError(void);
+void    printError(char *str);
 
 //Check.c
 int	checkInput(char **av);
@@ -34,7 +35,7 @@ int	verif_doublon(t_stack *stackA);
 
 //List.c
 t_stack	*create_node(char *arg);
-void	pushback(char *arg, t_stack **head);
+int	pushback(char *arg, t_stack **head);
 
 //ft_atoi.c
 long	ft_atoi(const char *str);
