@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:19 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/28 00:14:27 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/28 15:51:23 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	fillStackA(char **av, t_stack **stackA)
 			j++;
 		}
 		j = 0;
+		free_tab(arg);
 		i++;
 	}
 	//testFillStack(*stackA);

@@ -27,7 +27,7 @@ TEST_DIR = src/test/
 MAIN_FILES = main.c
 PARSING_FILES = check.c fill.c
 # EXEC_FILES = exec.c
-UTILS_FILES = ft_atoi.c ft_split.c list.c
+UTILS_FILES = ft_atoi.c ft_split.c list.c free.c
 TEST_FILES = test.c
 
 # ===== Source / Object / Dependency Lists =====

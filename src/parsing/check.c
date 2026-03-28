@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:56 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/27 23:46:48 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/28 15:48:58 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int	checkInput(char **av)
 			return (printError("arg allocation gone wrong (split)"), 1);
 		if (checkArg(arg))
 			return (1);
+		free_tab(arg);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:35:03 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/27 23:43:37 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/28 15:46:26 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int		main(int ac, char **av)
 		
 		algo
 		*/
+		free_stack(&stackA);
+		free_stack(&stackB);
 		return (0);
 	}
 	printError("expected 2 arg");

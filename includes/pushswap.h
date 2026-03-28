@@ -43,6 +43,10 @@ long	ft_atoi(const char *str);
 //ft_split.c
 char	**ft_split(char const *s, char c);
 
+//Free.c
+void	free_stack(t_stack **stackA);
+void	free_tab(char **tab);
+
 //test.c
 void	testFillStack(t_stack *stackA);
 
