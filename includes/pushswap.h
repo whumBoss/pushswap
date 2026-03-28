@@ -14,12 +14,13 @@
 
 typedef struct s_stack
 {
+	int				index;
 	int				value;
 	struct s_stack	*next;
 } t_stack;
 
 //Main.c
-void    printError(char *str);
+void	printError(char *str);
 
 //Check.c
 int	checkInput(char **av);
@@ -29,11 +30,13 @@ int	checkSign(char *arg);
 int	checkLimits(char *arg);
 
 //Fill.c
-int	replace_value(t_stack **stackA);
-int	fillStackA(char **av, t_stack **stackA);
+int	find_lowest_value(t_stack *stackA);
+int	assign_index(t_stack **stackA, int stack_size);
 int	verif_doublon(t_stack *stackA);
+int	fillStackA(char **av, t_stack **stackA);
 
 //List.c
+int	size_list(t_stack *stackA);
 t_stack	*create_node(char *arg);
 int	pushback(char *arg, t_stack **head);
 
@@ -47,7 +50,7 @@ char	**ft_split(char const *s, char c);
 void	free_stack(t_stack **stackA);
 void	free_tab(char **tab);
 
-//test.c
+//Test.c
 void	testFillStack(t_stack *stackA);
 
 #endif

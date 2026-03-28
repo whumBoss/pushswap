@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 19:56:10 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/26 23:14:58 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/28 19:56:43 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	testFillStack(t_stack *stackA)
 {
-	printf("------- Verif struct -------\n\n");
+	printf("\n\n------- Verif struct -------\n\n");
 	while (stackA->next != NULL)
 	{
 		stackA = stackA->next;
 		printf("NODE\n");
+		printf("node->index = %d\n", stackA->index);
 		printf("node->value = %d\n", stackA->value);
 		printf("node->next = %p\n", stackA->next);
-		printf("node's adress = %p\n", &stackA);
+		printf("node's adress = %p\n", stackA);
+		printf("pointeur's adress = %p\n", &stackA);
 	}
 }

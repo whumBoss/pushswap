@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:56 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/28 15:48:58 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/28 16:02:01 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	checkArg(char **arg)
 		if (ftIsDigit(arg[i]))
 			return (printError("arg is not digit"), 1);
 		if (checkSign(arg[i]))
-			return (printError("signe alone or to many signes"), 1);
+			return (printError("sign alone or too many signs"), 1);
 		if (checkLimits(arg[i]))
 			return (printError("arg is over or under the limits"), 1);
 		i++;
