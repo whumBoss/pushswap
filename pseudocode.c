@@ -26,14 +26,66 @@ puis on vas les trier
 
 	EXEC
 
-coder tout les mouvements
+coder tout les mouvements dans chaque mouv fonction il faut ecrire le nom de la fonction,
+suivi du nom de la stack concerne soit a ou b:
+
+
+swap : 
+sa -> swap the first 2 nodes in stackA (soit 23 et 12)
+sb -> swap the first 2 nodes in stackB (soit 11 et -60)
+ss -> swap the first 2 nodes in stackA et stackB (soit sa et sb en mm tmps)
+
+
+rotate :
+ra -> first node is put at the end of the list, 2nd node takes first place 
+and all the others node mouve up the chaine too in stackA
+rb ->first node is put at the end of the list, 2nd node takes first place 
+and all the others node mouve up the chaine too in stackB
+rr -> rr and rb at the same time
+
+
+reverse rotate rr
+rra -> last node is put at the begenning of the list,
+and all the others node mouve down the chaine too in stackA
+rrb -> last node is put at the begenning of the list,
+and all the others node mouve down the chaine too in stackB
+rrr -> rrr and rrb at the same time
+
+
+push :
+pa -> push first node of stackB in stackA
+pb -> push first node of stackA in stackB
+
+ex : 
+stackA : 23  12 -4 56
+stackB : 11 -60 -8 19
+
+
 
 Un algo pour liste de 2
 un algo pour liste de 3
 un algo pour liste de 5
 un algo pour tout ce qui est strictemt sup a 5
 
+
+sujet :
+pour une liste de 3 elements 3 mouv ou moins
+pour une liste de 5 elements 12 mouv ou moins
+pour une liste de 100 elements 1500 mouv ou moins
+pour une liste de 500 elements 11500 mouv ou moins
 */
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*

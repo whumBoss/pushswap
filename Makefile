@@ -20,21 +20,21 @@ CPPFLAGS = -I. -Includes -Includes/ft_print -Ilibft -MMD -MP
 # ===== Source Layout =====
 MAIN_DIR = src/
 PARSING_DIR = src/parsing/
-# EXEC_DIR = src/exec/
+SORTING_DIR = src/sorting/
 UTILS_DIR = src/utils/
 TEST_DIR = src/test/
 
 MAIN_FILES = main.c
 PARSING_FILES = check.c fill.c
-# EXEC_FILES = exec.c
+SORTING_FILES = mouv_sp.c mouv_rrr.c
 UTILS_FILES = ft_atoi.c ft_split.c list.c free.c
 TEST_FILES = test.c
 
 # ===== Source / Object / Dependency Lists =====
-# $(addprefix $(EXEC_DIR),$(EXEC_FILES))
 SRCS = \
 	$(addprefix $(MAIN_DIR),$(MAIN_FILES)) \
 	$(addprefix $(PARSING_DIR),$(PARSING_FILES)) \
+	$(addprefix $(SORTING_DIR),$(SORTING_FILES)) \
 	$(addprefix $(UTILS_DIR),$(UTILS_FILES)) \
 	$(addprefix $(TEST_DIR), $(TEST_FILES))
 

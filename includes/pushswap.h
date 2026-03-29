@@ -30,7 +30,7 @@ int	checkSign(char *arg);
 int	checkLimits(char *arg);
 
 //Fill.c
-int	assign_index(t_stack **stackA);
+void	assign_index(t_stack **stackA);
 int	verif_doublon(t_stack *stackA);
 int	fillStackA(char **av, t_stack **stackA);
 
@@ -49,7 +49,12 @@ char	**ft_split(char const *s, char c);
 void	free_stack(t_stack **stackA);
 void	free_tab(char **tab);
 
+//Mouv_sp
+void	mv_push(t_stack **stack_origin, t_stack **stack_destination);
+
+//Mouv_rrr.c
+
 //Test.c
-void	testFillStack(t_stack *stackA);
+void	PrintStack(t_stack *stackA);
 
 #endif

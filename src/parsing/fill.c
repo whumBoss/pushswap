@@ -6,13 +6,13 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:19 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/29 19:51:55 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/29 21:20:32 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-int	assign_index(t_stack **stackA)
+void	assign_index(t_stack **stackA)
 {
 	int		index;
 	t_stack	*compare_stackA;
@@ -34,7 +34,6 @@ int	assign_index(t_stack **stackA)
 		current_node->index = index;
 		current_node = current_node->next;
 	}
-	return(0);
 }
 
 	//j'ai besoin de parcourir la liste pour verifier qu'il n'y a pas de doublon
@@ -60,12 +59,9 @@ int	verif_doublon(t_stack *stackA)
 	copystack = stackA;
 	while (copystack->next != NULL)
 	{
-		// printf("\n\n--- NOUVELLE ITERATION ---\n\n");
-		// printf("buffer = %d\n", buffer);
 		while (copystack->next != NULL)
 		{
 			copystack = copystack->next;
-			// printf("copystack->value = %d\n", copystack->value);
 			if (buffer == copystack->value)
 				return (1);
 		}
@@ -74,7 +70,6 @@ int	verif_doublon(t_stack *stackA)
 			copystack = copystack->next;
 		copystack = copystack->next;
 		buffer = copystack->value;
-		// printf("\ncopystack->value at the end = %d\n", copystack->value);
 	}
 	return (0);
 }
@@ -108,10 +103,10 @@ int	fillStackA(char **av, t_stack **stackA)
 		free_tab(arg);
 		i++;
 	}
-	testFillStack(*stackA);
+	// PrintStack(*stackA);
 	if (verif_doublon(*stackA))
 		return (printError("args are identical values"), 1);
 	assign_index(stackA);
-	testFillStack(*stackA);
+	// PrintStack(*stackA);
 	return (0);
 }
