@@ -6,106 +6,33 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:19 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/28 20:28:07 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/29 19:51:55 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-/*
-	REPLACE LA PLUS PETITE VALUE
-	
-	CHERCHER LA PLUS PETITE VALUE
-	acceder au premier noeud
-	copier la value du premier noeud dans lowest_value
-	continuer de parcourir la liste
-	si je rencontre une value qui est plus petite que celle de lowest_value
-	remplacer la valeur de lowest_value par cette nvle +petite value
-	repeter le processe jusqu'a la fin de la liste
-	return lowest_value
-	
-
-	
-	REPLACE LES AUTRES VALUES
-	
-	en boucle:
-
-	CHERCHER LA PLUS PETITE VALUE
-	j'ai besoin d'une variable index qui sera a 1 au depart
-	je recupere lowest_value 
-	et je creer next_lowest
-	copier la head pour parcourir la liste
-	copier la value du premier noeud dans next_lowest
-	et copier l'adresse du premier noeud dans un pointeur node
-	continuer de parcourir la liste
-	si je rencontre une value qui est plus petite que celle de next_lowest et plus grande que lowest_value
-	remplacer la valeur de next_lowest par cette nvle +petite value
-	remplacer l'adresse contenue dans node par l'adresse de ce node qui contient la plus petite value
-	repeter le processe jusqu'a la fin de la liste
-
-	ASSIGNER L'INDEX
-	acceder au node pointer par node
-	assigner l'index du node a la meme valeur que la variable index creer au depart
-	assigner lowest_value a la meme valeur que next_lowest
-	incrementer la variable index
-	puis recommencer la boucle
-*/
-
-int	find_lowest_value(t_stack *stackA)
+int	assign_index(t_stack **stackA)
 {
-	int	lowest_value;
-	
-	stackA = stackA->next;
-	lowest_value = stackA->value;
-	while (stackA->next != NULL)
+	int		index;
+	t_stack	*compare_stackA;
+	t_stack	*current_node;
+
+	current_node = *stackA;
+	current_node = current_node->next;
+	while (current_node)
 	{
-		stackA = stackA->next;
-		if (stackA->value < lowest_value)
-			lowest_value = stackA->value;
-	}
-	return (lowest_value);
-}
-
-	//printf("\n\nlowest = %d\n", lowest_value);
-	//printf("adress of the copynode = %p\n", node);
-	// *stackA = (*stackA)->next;
-	// printf("stacknode index = %d\n", (*stackA)->index);
-	//printf("adress of original node = %p\n", *stackA);
-	// printf("size = %d\n", stack_size);
-	// printf("node index = %d\n", node->index);
-	// printf("stacknode index = %d\n", (*stackA)->index);
-
-int	assign_index(t_stack **stackA, int stack_size)
-{
-	int	lowest_value;
-	int	next_lowest;
-	int	index;
-	t_stack	*copy_stackA;
-	t_stack	*node;
-
-	index = 1;
-	lowest_value = find_lowest_value(*stackA);
-	while (index < stack_size)
-	{
-		copy_stackA = *stackA;
-		copy_stackA = copy_stackA->next;
-		next_lowest = copy_stackA->value;
-		node = copy_stackA;
-		printf("\nlowest_value = %d\n", lowest_value);
-		printf("next_lowest = %d\n", next_lowest);
-		while (copy_stackA->next != NULL)
+		index = 0;
+		compare_stackA = *stackA;
+		compare_stackA = compare_stackA->next;
+		while (compare_stackA)
 		{
-			copy_stackA = copy_stackA->next;
-			if (copy_stackA->value < next_lowest && copy_stackA->value > lowest_value)
-			{
-				next_lowest = copy_stackA->value;
-				node = copy_stackA;
-			}
+			if (compare_stackA->value < current_node->value)
+				index++;
+			compare_stackA = compare_stackA->next;
 		}
-		node->index = index;
-		lowest_value = next_lowest;
-		index++;
-		testFillStack(*stackA);
+		current_node->index = index;
+		current_node = current_node->next;
 	}
 	return(0);
 }
@@ -165,9 +92,10 @@ int	fillStackA(char **av, t_stack **stackA)
 	char	**arg;
 
 	i = 0;
-	j = 0;
+
 	while (av[i])
 	{
+		j = 0;
 		arg = ft_split(av[i], ' ');
 		if (!arg)
 			return (printError("arg allocation gone wrong (split)"), 1);
@@ -177,14 +105,13 @@ int	fillStackA(char **av, t_stack **stackA)
 				return (free_stack(stackA), 1);
 			j++;
 		}
-		j = 0;
 		free_tab(arg);
 		i++;
 	}
 	testFillStack(*stackA);
 	if (verif_doublon(*stackA))
 		return (printError("args are identical values"), 1);
-	//printf("size = %d\n", size_list(*stackA));
-	assign_index(stackA, size_list(*stackA));
+	assign_index(stackA);
+	testFillStack(*stackA);
 	return (0);
 }

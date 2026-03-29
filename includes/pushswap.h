@@ -30,8 +30,7 @@ int	checkSign(char *arg);
 int	checkLimits(char *arg);
 
 //Fill.c
-int	find_lowest_value(t_stack *stackA);
-int	assign_index(t_stack **stackA, int stack_size);
+int	assign_index(t_stack **stackA);
 int	verif_doublon(t_stack *stackA);
 int	fillStackA(char **av, t_stack **stackA);
 
