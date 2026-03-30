@@ -50,7 +50,9 @@ void	free_stack(t_stack **stackA);
 void	free_tab(char **tab);
 
 //Mouv_sp
-void	mv_push(t_stack **stack_origin, t_stack **stack_destination);
+void	mv_swap(t_stack **stack, char *mouv_name);
+void	mv_sswap(t_stack **stackA, t_stack **stackB);
+void	mv_push(t_stack **stack_origin, t_stack **stack_destination, char *mouv_name);
 
 //Mouv_rrr.c
 

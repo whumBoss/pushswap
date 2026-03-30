@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:19 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/29 21:20:32 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/30 18:44:39 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	assign_index(t_stack **stackA)
 	{
 		index = 0;
 		compare_stackA = *stackA;
-		compare_stackA = compare_stackA->next;
 		while (compare_stackA)
 		{
 			if (compare_stackA->value < current_node->value)
@@ -54,7 +53,6 @@ int	verif_doublon(t_stack *stackA)
 	t_stack	*copystack;
 	int		buffer;
 	
-	stackA = stackA->next;
 	buffer = stackA->value;
 	copystack = stackA;
 	while (copystack->next != NULL)
@@ -103,10 +101,9 @@ int	fillStackA(char **av, t_stack **stackA)
 		free_tab(arg);
 		i++;
 	}
-	// PrintStack(*stackA);
+	*stackA = (*stackA)->next;
 	if (verif_doublon(*stackA))
 		return (printError("args are identical values"), 1);
 	assign_index(stackA);
-	// PrintStack(*stackA);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 19:56:10 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/29 21:19:58 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/30 22:28:05 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	PrintStack(t_stack *stackA)
 {
 	printf("\n\n------- Verif struct -------\n\n");
-	while (stackA->next != NULL)
+	while (stackA)
 	{
-		stackA = stackA->next;
 		printf("NODE\n");
-		printf("node->index = %d\n", stackA->index);
 		printf("node->value = %d\n", stackA->value);
+		printf("node->index = %d\n", stackA->index);
 		printf("node->next = %p\n", stackA->next);
 		printf("node's adress = %p\n", stackA);
 		printf("pointeur's adress = %p\n", &stackA);
+		stackA = stackA->next;
 	}
 }
