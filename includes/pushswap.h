@@ -55,6 +55,10 @@ void	mv_sswap(t_stack **stackA, t_stack **stackB);
 void	mv_push(t_stack **stack_origin, t_stack **stack_destination, char *mouv_name);
 
 //Mouv_rrr.c
+void	mv_rotate(t_stack **stack, char *mouv_name);
+void	mv_rr(t_stack **stackA, t_stack **stackB);
+void	mv_reverse_rotate(t_stack **stack, char *mouv_name);
+void	mv_rrr(t_stack **stackA, t_stack **stackB);
 
 //Test.c
 void	PrintStack(t_stack *stackA);

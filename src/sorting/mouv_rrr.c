@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 21:18:29 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/30 21:31:05 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/30 22:58:32 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,48 @@ and all the others node mouve down the chaine too in stackB
 rrr -> rrr and rrb at the same time
 */
 
+void	mv_rotate(t_stack **stack, char *mouv_name)
+{
+	t_stack	*buffer_last;
+	t_stack	*buffer_first;
+
+	buffer_last = *stack;
+	buffer_last->next = NULL;
+	buffer_first = (*stack)->next;
+	while (*stack)
+		*stack = (*stack)->next;
+	(*stack)->next = buffer_last;
+	*stack = buffer_first;
+	if (mouv_name[0] != '\0')
+		ft_printf("%s\n", mouv_name);
+}
+
+void	mv_rr(t_stack **stackA, t_stack **stackB)
+{
+	mv_rotate(stackA, "\0");
+	mv_rotate(stackB, "\0");
+	ft_printf("rr\n");
+}
+
+void	mv_reverse_rotate(t_stack **stack, char *mouv_name)
+{
+	t_stack	*buffer_first;
+	t_stack	*buffer_last;
+
+	buffer_first = *stack;
+	while ((*stack)->next != NULL)
+		*stack =(*stack)->next;
+	buffer_last =(*stack)->next;
+	(*stack)->next = NULL;
+	buffer_last->next = buffer_first;
+	*stack = buffer_first;
+	if (mouv_name[0] != '\0')
+		ft_printf("%s\n", mouv_name);
+}
+
+void	mv_rrr(t_stack **stackA, t_stack **stackB)
+{
+	mv_reverse_rotate(stackA, "\0");
+	mv_reverse_rotate(stackB, "\0");
+	ft_printf("rrr\n");
+}
