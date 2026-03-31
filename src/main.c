@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:35:03 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/30 23:00:40 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:18:57 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ int		main(int ac, char **av)
 		mv_push(&stackA, &stackB, "pb");
 		mv_push(&stackA, &stackB, "pb");
 		mv_push(&stackA, &stackB, "pb");
-		PrintStack(stackA);
-		PrintStack(stackB);
-		// tester toutes les fonction dans mouv_rrr.c
+		// PrintStack(stackA);
+		// PrintStack(stackB);
+		// mv_rrr(&stackA, &stackB);
+		// PrintStack(stackA);
+		// PrintStack(stackB);
 		/*
 		algo
 		*/
