@@ -21,12 +21,14 @@ CPPFLAGS = -I. -Includes -Includes/ft_print -Ilibft -MMD -MP
 MAIN_DIR = src/
 PARSING_DIR = src/parsing/
 SORTING_DIR = src/sorting/
+#ALGO_DIR = src/algo/
 UTILS_DIR = src/utils/
 TEST_DIR = src/test/
 
 MAIN_FILES = main.c
 PARSING_FILES = check.c fill.c
 SORTING_FILES = mouv_sp.c mouv_rrr.c
+#ALGO_FILES = algo.c
 UTILS_FILES = ft_atoi.c ft_split.c list.c free.c
 TEST_FILES = test.c
 
@@ -35,8 +37,9 @@ SRCS = \
 	$(addprefix $(MAIN_DIR),$(MAIN_FILES)) \
 	$(addprefix $(PARSING_DIR),$(PARSING_FILES)) \
 	$(addprefix $(SORTING_DIR),$(SORTING_FILES)) \
+	$(addprefix $(ALGO_DIR),$(ALGO_FILES)) \
 	$(addprefix $(UTILS_DIR),$(UTILS_FILES)) \
-	$(addprefix $(TEST_DIR), $(TEST_FILES))
+	$(addprefix $(TEST_DIR),$(TEST_FILES))
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 DEPS = $(OBJS:.o=.d)

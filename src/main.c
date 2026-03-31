@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wissalhumeau <wissalhumeau@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:35:03 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/31 13:18:57 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/03/31 18:48:50 by wissalhumea      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int		main(int ac, char **av)
 			return (1);
 		if (fillStackA(av, &stackA))
 			return (1);
-		// PrintStack(stackA);
-		mv_push(&stackA, &stackB, "pb");
-		mv_push(&stackA, &stackB, "pb");
-		mv_push(&stackA, &stackB, "pb");
+		PrintStack(stackA);
+		//mv_push(&stackA, &stackB, "pb");
+		//mv_push(&stackA, &stackB, "pb");
+		//mv_push(&stackA, &stackB, "pb");
 		// PrintStack(stackA);
 		// PrintStack(stackB);
 		// mv_rrr(&stackA, &stackB);
