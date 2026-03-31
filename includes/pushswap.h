@@ -60,6 +60,12 @@ void	mv_rr(t_stack **stackA, t_stack **stackB);
 void	mv_reverse_rotate(t_stack **stack, char *mouv_name);
 void	mv_rrr(t_stack **stackA, t_stack **stackB);
 
+//Algo.c
+void	which_algo(t_stack **stackA, t_stack **stackB);
+int	count_nodes(t_stack *stackA);
+void	algo_two_nodes(t_stack **stackA);
+void	algo_three_nodes(t_stack **stackA);
+
 //Test.c
 void	PrintStack(t_stack *stackA);
 

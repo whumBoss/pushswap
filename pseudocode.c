@@ -106,5 +106,22 @@ mais a l'index d'intervalle + la moitier de (l'index d'intervalle + la taille du
 De cette maniere les deux intervalles cites precedements font en fait la moitier de la taille totale des nodes regarde
 
 
+verif_doublon
+j'ai besoin de parcourir la liste pour verifier qu'il n'y a pas de doublon
+	//donc j'envoie un pointeur de la list pour pouvoir la parcourir sans modifier le contenue
+	//je met la value dans un buffer et je passe au prochain noeud
+	//chaque fois que je passe au noeud suivant je compare la value avec le buffer
+	//si ils sont egales je return 1, printerror, fin du prog
+	//si j'ai parcourus toute la liste et que j'ai pas trouver de doublon du buffer
+	//je dois recommencer le process avec la value du 2e noeud puis du 3e etc..
+	
+	//comment faire?
+	//j'ai surrement besoin d'une copie de la copie de la list pour pouvoir revenir a la head facilement
+	//je peux utiliser le buffer pour revenir au noeud au quel j'en etais 
+	//passer au noeud suivant et copier la value
 
+	fillstackA
+	pushback la liste chainee en boucle avec av[i]
+	dans push back je creatnode et je atoi de av[i]
+	pour a la fin avoir une liste chainee qui contient des int bases sur les arg recu en input
 */
