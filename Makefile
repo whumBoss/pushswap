@@ -1,5 +1,5 @@
 # ===== Target =====
-NAME = pushswap
+NAME = push_swap
 
 # ===== Directories =====
 # LIBFT_DIR = libft/
