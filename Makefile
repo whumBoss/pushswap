@@ -63,12 +63,12 @@ $(OBJ_DIR)/%.o: %.c
 # ===== Cleanup =====
 clean:
 	@rm -rf $(OBJ_DIR)
-	@$(MAKE) clean -C $(LIBFT_DIR)
+#	@$(MAKE) clean -C $(LIBFT_DIR)
 	@$(MAKE) clean -C $(PRINTF_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
-	@$(MAKE) fclean -C $(LIBFT_DIR)
+#	@$(MAKE) fclean -C $(LIBFT_DIR)
 	@$(MAKE) fclean -C $(PRINTF_DIR)
 
 re: fclean all

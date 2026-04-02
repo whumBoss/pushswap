@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:19 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/31 20:29:22 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/02 19:06:58 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	assign_index(t_stack **stackA)
 	t_stack	*current_node;
 
 	current_node = *stackA;
-	current_node = current_node->next;
+	//current_node = current_node->next;
 	while (current_node)
 	{
 		index = 0;
