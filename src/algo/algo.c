@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 19:24:11 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/04/02 20:52:24 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/04 13:54:40 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	which_algo(t_stack **stackA, t_stack **stackB)
 	if (list_size == 3)
 		algo_three_nodes(stackA);
 	// if list_size ==4 ?????????? <======== /!\ /!\ /!\.
-	if (list_size == 5)
-		algo_five_nodes(stackA, stackB);
-	// else || if (list_size > 5)
-		// algo_over_five();
+	if (list_size <= 5)
+		algo_four_five_nodes(stackA, stackB);
+	if (list_size > 5)
+		algo_over_five(stackA, stackB);
 	(void)stackB;
 }
 
@@ -60,7 +60,7 @@ void	algo_three_nodes(t_stack **stackA)
 		mv_swap(stackA, "sa");
 }
 
-void	algo_five_nodes(t_stack **stackA, t_stack **stackB)
+void	algo_four_five_nodes(t_stack **stackA, t_stack **stackB)
 {
 	int	rep;
 
@@ -96,7 +96,40 @@ void	algo_five_nodes(t_stack **stackA, t_stack **stackB)
 	}
 }
 
-// void	algo_over_five()
-// {
-// 
-// }
+void	algo_over_five(t_stack **stackA, t_stack **stackB)
+{
+	int	i;
+	int	chunksize;
+	//t_stack	**copy;
+	
+	i = 0;
+	chunksize = 10;
+	while (*stackA)
+	{
+		if ((*stackA)->index <= i)
+		{
+			mv_push(stackA, stackB, "pb");
+			//*copy = *stackA;
+			i++;
+			printf("yo\n");
+		}
+		else if ((*stackA)->index <= i + chunksize)
+		{
+			mv_push(stackA, stackB, "pb");
+			mv_rotate(stackB, "rb");
+			//*copy = *stackA;
+			i++;
+		}
+		PrintStack(*stackA);
+		PrintStack(*stackB);
+		printf("yo\n");
+		if ((*stackA)->next)
+		{
+			printf("yo\n");
+			mv_rotate(stackA, "ra");
+		}
+		printf("yo\n");
+		*stackA = (*stackA)->next;
+		printf("yo\n");
+	}
+}
