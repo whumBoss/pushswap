@@ -66,7 +66,7 @@ int	count_nodes(t_stack *stackA);
 void	algo_two_nodes(t_stack **stackA);
 void	algo_three_nodes(t_stack **stackA);
 void	algo_four_five_nodes(t_stack **stackA, t_stack **stackB);
-void	algo_over_five(t_stack **stackA, t_stack **stackB);
+void	algo_over_five(t_stack **stackA, t_stack **stackB, int list_size);
 
 //Test.c
 void	PrintStack(t_stack *stackA);

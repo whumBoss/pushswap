@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 21:18:06 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/30 22:57:20 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:09:18 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ void	mv_push(t_stack **stack_origin, t_stack **stack_destination, char *mouv_nam
 {
 	t_stack	*buffer;
 	buffer = *stack_origin;
-	*stack_origin = (*stack_origin)->next;
+	if ((*stack_origin)->next != NULL)
+		*stack_origin = (*stack_origin)->next;
+	else
+		*stack_origin = NULL;
 	if (!*stack_destination)
 		buffer->next = NULL;
 	else

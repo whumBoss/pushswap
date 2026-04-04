@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 21:18:29 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/31 13:19:46 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/04 16:22:19 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	mv_rotate(t_stack **stack, char *mouv_name)
 {
 	t_stack	*buffer_last;
 	t_stack	*buffer_first;
+	if ((*stack)->next == NULL)
+		return;
 	buffer_first = (*stack)->next;
 	buffer_last = *stack;
 	buffer_last->next = NULL;
@@ -55,6 +57,8 @@ void	mv_reverse_rotate(t_stack **stack, char *mouv_name)
 {
 	t_stack	*buffer_first;
 	t_stack	*buffer_last;
+	if ((*stack)->next == NULL)
+		return;
 	buffer_first = *stack;
 	while ((*stack)->next->next != NULL)
 		*stack =(*stack)->next;
