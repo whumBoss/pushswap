@@ -60,12 +60,17 @@ void	mv_rr(t_stack **stackA, t_stack **stackB);
 void	mv_reverse_rotate(t_stack **stack, char *mouv_name);
 void	mv_rrr(t_stack **stackA, t_stack **stackB);
 
-//Algo.c
+//Small_algo.c
 void	which_algo(t_stack **stackA, t_stack **stackB);
-int	count_nodes(t_stack *stackA);
+int	count_nodes(t_stack *stack);
 void	algo_two_nodes(t_stack **stackA);
 void	algo_three_nodes(t_stack **stackA);
 void	algo_four_five_nodes(t_stack **stackA, t_stack **stackB);
+
+//Big_algo.c
+int	find_node_position(t_stack *stack, int index);
+void	find_biggest_node(t_stack **stackB);
+int	chunk_size(int	stack_size);
 void	algo_over_five(t_stack **stackA, t_stack **stackB, int list_size);
 
 //Test.c

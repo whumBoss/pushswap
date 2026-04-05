@@ -1,44 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
+/*   small_algo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 19:24:11 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/04/04 17:28:36 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/05 19:48:41 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-int	count_nodes(t_stack *stackA)
+int	count_nodes(t_stack *stack)
 {
-	int	list_size;
+	int	stack_size;
 
-	list_size = 0;
-	while (stackA)
+	stack_size = 0;
+	while (stack)
 	{
-		stackA = stackA->next;
-		list_size++;
+		stack = stack->next;
+		stack_size++;
 	}
-	return (list_size);
+	return (stack_size);
 }
 
 void	which_algo(t_stack **stackA, t_stack **stackB)
 {
-	int	list_size;
+	int	stack_size;
 
-	list_size = count_nodes(*stackA);
-	if (list_size == 2)
+	stack_size = count_nodes(*stackA);
+	if (stack_size == 2)
 		algo_two_nodes(stackA);
-	if (list_size == 3)
+	if (stack_size == 3)
 		algo_three_nodes(stackA);
 	// if list_size ==4 ?????????? <======== /!\ /!\ /!\.
-	if (list_size <= 5)
+	if (stack_size <= 5)
 		algo_four_five_nodes(stackA, stackB);
-	if (list_size > 5)
-		algo_over_five(stackA, stackB, list_size);
+	if (stack_size > 5)
+		algo_over_five(stackA, stackB, stack_size);
 	(void)stackB;
 }
 
@@ -96,30 +96,4 @@ void	algo_four_five_nodes(t_stack **stackA, t_stack **stackB)
 	}
 }
 
-void	algo_over_five(t_stack **stackA, t_stack **stackB, int list_size)
-{
-	int	i;
-	int	chunksize;
-	
-	i = 0;
-	chunksize = 10;
-	(void)list_size;
-	while (*stackA)
-	{
-		if ((*stackA)->index <= i)
-		{
-			mv_push(stackA, stackB, "pb");
-			//mv_rotate(stackB, "rb");
-			i++;
-		}
-		else if (*stackA && (*stackA)->index <= i + chunksize)
-		{
-			mv_push(stackA, stackB, "pb");
-			mv_rotate(stackB, "rb");
-			i++;
-		}
-		if (*stackA &&(*stackA)->next)
-			mv_rotate(stackA, "ra");
-	}
-	PrintStack(*stackB);
-}
+

@@ -28,7 +28,7 @@ TEST_DIR = src/test/
 MAIN_FILES = main.c
 PARSING_FILES = check.c fill.c
 SORTING_FILES = mouv_sp.c mouv_rrr.c
-ALGO_FILES = algo.c
+ALGO_FILES = small_algo.c big_algo.c
 UTILS_FILES = ft_atoi.c ft_split.c list.c free.c
 TEST_FILES = test.c
 
