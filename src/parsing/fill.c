@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:19 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/04/02 19:06:58 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/05 21:25:51 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	fillStackA(char **av, t_stack **stackA)
 	int		i;
 	int		j;
 	char	**arg;
+	t_stack	*copy;
 
 	i = 0;
 
@@ -96,7 +97,9 @@ int	fillStackA(char **av, t_stack **stackA)
 		free_tab(arg);
 		i++;
 	}
-	*stackA = (*stackA)->next;
+	copy = (*stackA)->next;
+	free(*stackA);
+	*stackA = copy;
 	if (verif_doublon(*stackA))
 		return (printError("args are identical values"), 1);
 	if (sorted_or_not(*stackA))
