@@ -6,22 +6,21 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/27 17:00:58 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/28 15:49:43 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/05 22:06:46 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-void	free_stack(t_stack **stackA)
+void	free_stack(t_stack **satck_a)
 {
 	t_stack	*tmp;
 
-	while (*stackA)
+	while (*satck_a)
 	{
-		tmp = (*stackA)->next;
-		//free((*stackA)->value);
-		free(*stackA);
-		*stackA = tmp;
+		tmp = (*satck_a)->next;
+		free(*satck_a);
+		*satck_a = tmp;
 	}
 }
 

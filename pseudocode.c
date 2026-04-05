@@ -19,6 +19,17 @@ PARSING
 
 VERIF
 
+taper les 3 fonctions de check
+
+ftIsAlpha
+reprendre ft_isalpha de la libft et le custom pour que il accepte rien sauf des chiffre des signe et que il dois prendre un tableau en entree
+
+check_sign
+signe seul, plusieurs signe en premier et signe ds le nb
+
+check_limits
+atoi et verif si le nb <= INTMAX && nb >= INTMIN
+
 tu recois une liste de nb neg ou positive entre le int min et le int max
 tu les trie si c'est deja le cas tu fait rien
 si il y a des doublons tu sors erreur
@@ -50,31 +61,55 @@ coder tout les mouvements dans chaque mouv fonction il faut ecrire le nom de la 
 suivi du nom de la stack concerne soit a ou b:
 
 swap : 
-sa -> swap the first 2 nodes in stackA (soit 23 et 12)
-sb -> swap the first 2 nodes in stackB (soit 11 et -60)
-ss -> swap the first 2 nodes in stackA et stackB (soit sa et sb en mm tmps)
+sa -> swap the first 2 nodes in satck_a (soit 23 et 12)
+sb -> swap the first 2 nodes in satck_b (soit 11 et -60)
+ss -> swap the first 2 nodes in satck_a et satck_b (soit sa et sb en mm tmps)
 
 rotate :
 ra -> first node is put at the end of the list, 2nd node takes first place 
-and all the others node mouve up the chaine too in stackA
+and all the others node mouve up the chaine too in satck_a
 rb ->first node is put at the end of the list, 2nd node takes first place 
-and all the others node mouve up the chaine too in stackB
+and all the others node mouve up the chaine too in satck_b
 rr -> rr and rb at the same time
 
 reverse rotate rr
 rra -> last node is put at the begenning of the list,
-and all the others node mouve down the chaine too in stackA
+and all the others node mouve down the chaine too in satck_a
 rrb -> last node is put at the begenning of the list,
-and all the others node mouve down the chaine too in stackB
+and all the others node mouve down the chaine too in satck_b
 rrr -> rrr and rrb at the same time
 
 push :
-pa -> push first node of stackB in stackA
-pb -> push first node of stackA in stackB
+pa -> push first node of satck_b in satck_a
+pb -> push first node of satck_a in satck_b
 
 ex : 
-stackA : 23  12 -4 56
-stackB : 11 -60 -8 19
+satck_a : 23  12 -4 56
+satck_b : 11 -60 -8 19
+
+swap : 
+sa -> swap the first 2 nodes in satck_a (soit 23 et 12)  V
+sb -> swap the first 2 nodes in satck_b (soit 11 et -60)  V
+ss -> swap the first 2 nodes in satck_a et satck_b (soit sa et sb en mm tmps)  X
+
+push :
+pa -> push first node of satck_b in satck_a  V
+pb -> push first node of satck_a in satck_b  V
+
+rotate :
+ra -> first node is put at the end of the list, 2nd node takes first place 
+and all the others node mouve up the chaine too in satck_a
+rb ->first node is put at the end of the list, 2nd node takes first place 
+and all the others node mouve up the chaine too in satck_b
+rr -> rr and rb at the same time
+
+
+reverse rotate rr
+rra -> last node is put at the begenning of the list,
+and all the others node mouve down the chaine too in satck_a
+rrb -> last node is put at the begenning of the list,
+and all the others node mouve down the chaine too in satck_b
+rrr -> rrr and rrb at the same time
 
 	ALGORITHME
 
@@ -86,9 +121,9 @@ un algo pour tout ce qui est strictemt sup a 5
 
 Le concept des chunks
 chunk = morceaux composee d'un certain nombre de nodes (exemple pour commencer, chunk de 10 nodes)
-Grace aux index, je cherche dans ma stackA les nodes dont l'index est entre 0 et 10
-Si l'index du node lu est compris entre 0 et la taille du chunk, on l'envoie dans la stackB
-Sinon on l'envoie a la fin de la stackA
+Grace aux index, je cherche dans ma satck_a les nodes dont l'index est entre 0 et 10
+Si l'index du node lu est compris entre 0 et la taille du chunk, on l'envoie dans la satck_b
+Sinon on l'envoie a la fin de la satck_a
 
 Pour optimiser le trie je peux:
 
@@ -97,7 +132,7 @@ l'index d'intervalle    <= Premier intervalle des la plus petites valeur mis en 
 La 2e condition pourras push puis rotate (soit en fin de list) les nodes dont les index sont inferieur ou 
 egale a l'index d'intervalle + la taille du chunk    <= 2e trie des plus grandes valeur du chunk mis en bas
 
-.Incrementer l'index d'intervalle a chaque node push dans la stackB
+.Incrementer l'index d'intervalle a chaque node push dans la satck_b
 Ca permet de faire evoluer les 2 intervalles au fur et a mesure de l'avancement du trie
 
 .Modifier le premier intervalle...
@@ -105,13 +140,31 @@ Dans la premiere condition modifier pour push tout les nodes inferieur ou egale 
 mais a l'index d'intervalle + la moitier de (l'index d'intervalle + la taille du chunk)
 De cette maniere les deux intervalles cites precedements font en fait la moitier de la taille totale des nodes regarde
 
+la satck_a a ete videe et la satck_b a ete remplie
+	maintenant je dois remplir la satck_a dans le bon ordre
+	
+	je vais push un par un les nodes de la b dans la a 
+	mais avant de push elle vas chercher le node que je souhaite push dans la satck_b
+	
+	pour ca j'ai une fonction qui:
+	compte le nb de node dans b 
+	cherche la position du plus grd node contenue dans b dans cette meme stack
+	puis monte ce node en tete de list pour pouvoir le push facilement
+	
+	donc si le node est dans la premier moitier je vais rotate tout les nodes
+	qui sont avant lui jusqu'a ce qu'il soit le premier
+	et si le node est dans la 2e moitier je vais reverse rotate tout les nodes
+	qui sont apres lui et lui aussi pour le ramene en tete de list
+
+
+
 
 verif_doublon
 j'ai besoin de parcourir la liste pour verifier qu'il n'y a pas de doublon
 	//donc j'envoie un pointeur de la list pour pouvoir la parcourir sans modifier le contenue
 	//je met la value dans un buffer et je passe au prochain noeud
 	//chaque fois que je passe au noeud suivant je compare la value avec le buffer
-	//si ils sont egales je return 1, printerror, fin du prog
+	//si ils sont egales je return 1, print_error, fin du prog
 	//si j'ai parcourus toute la liste et que j'ai pas trouver de doublon du buffer
 	//je dois recommencer le process avec la value du 2e noeud puis du 3e etc..
 	
@@ -120,7 +173,7 @@ j'ai besoin de parcourir la liste pour verifier qu'il n'y a pas de doublon
 	//je peux utiliser le buffer pour revenir au noeud au quel j'en etais 
 	//passer au noeud suivant et copier la value
 
-	fillstackA
+	fillsatck_a
 	pushback la liste chainee en boucle avec av[i]
 	dans push back je creatnode et je atoi de av[i]
 	pour a la fin avoir une liste chainee qui contient des int bases sur les arg recu en input

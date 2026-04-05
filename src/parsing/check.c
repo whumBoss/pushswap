@@ -6,26 +6,13 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:56 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/03/28 16:02:01 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/05 22:17:59 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-/*
-taper les 3 fonctions de check
-
-ftIsAlpha
-reprendre ft_isalpha de la libft et le custom pour que il accepte rien sauf des chiffre des signe et que il dois prendre un tableau en entree
-
-checkSign
-signe seul, plusieurs signe en premier et signe ds le nb
-
-checkLimits
-atoi et verif si le nb <= INTMAX && nb >= INTMIN
-*/
-
-int	checkLimits(char *arg)
+int	check_limits(char *arg)
 {
 	long		value;
 
@@ -35,7 +22,7 @@ int	checkLimits(char *arg)
 	return (0);
 }
 
-int	checkSign(char *arg)
+int	check_sign(char *arg)
 {
 	int		i;
 
@@ -56,7 +43,7 @@ int	checkSign(char *arg)
 	return (0);
 }
 
-int	ftIsDigit(char *arg)
+int	ft_is_digit(char *arg)
 {
 	int		i;
 
@@ -70,25 +57,25 @@ int	ftIsDigit(char *arg)
 	return (1);
 }
 
-int	checkArg(char **arg)
+int	check_arg(char **arg)
 {
 	int	i;
 
 	i = 0;
 	while (arg[i])
 	{
-		if (ftIsDigit(arg[i]))
-			return (printError("arg is not digit"), 1);
-		if (checkSign(arg[i]))
-			return (printError("sign alone or too many signs"), 1);
-		if (checkLimits(arg[i]))
-			return (printError("arg is over or under the limits"), 1);
+		if (ft_is_digit(arg[i]))
+			return (print_error("arg is not digit"), 1);
+		if (check_sign(arg[i]))
+			return (print_error("sign alone or too many signs"), 1);
+		if (check_limits(arg[i]))
+			return (print_error("arg is over or under the limits"), 1);
 		i++;
 	}
 	return (0);
 }
 
-int	checkInput(char **av)
+int	check_input(char **av)
 {
 	int		i;
 	char	**arg;
@@ -98,8 +85,8 @@ int	checkInput(char **av)
 	{
 		arg = ft_split(av[i], ' ');
 		if (!arg)
-			return (printError("arg allocation gone wrong (split)"), 1);
-		if (checkArg(arg))
+			return (print_error("arg allocation gone wrong (split)"), 1);
+		if (check_arg(arg))
 			return (1);
 		free_tab(arg);
 		i++;
