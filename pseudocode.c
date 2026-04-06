@@ -1,5 +1,12 @@
 /*	PSEUDOCODE
 
+tester ave cle checkeur
+ARG=($(python3 -c "import random; l=list(range(0, 5)); random.shuffle(l); print(*l)"))
+./push_swap ${ARG[@]} | ./checker_linux ${ARG[@]}
+./push_swap ${ARG[@]} | wc -l
+echo ${ARG[@]}
+
+
 PUSHSWAP
 
 ALGO AMIR&ALEXSKU
@@ -61,54 +68,54 @@ coder tout les mouvements dans chaque mouv fonction il faut ecrire le nom de la 
 suivi du nom de la stack concerne soit a ou b:
 
 swap : 
-sa -> swap the first 2 nodes in satck_a (soit 23 et 12)
-sb -> swap the first 2 nodes in satck_b (soit 11 et -60)
-ss -> swap the first 2 nodes in satck_a et satck_b (soit sa et sb en mm tmps)
+sa -> swap the first 2 nodes in stack_a (soit 23 et 12)
+sb -> swap the first 2 nodes in stack_b (soit 11 et -60)
+ss -> swap the first 2 nodes in stack_a et stack_b (soit sa et sb en mm tmps)
 
 rotate :
 ra -> first node is put at the end of the list, 2nd node takes first place 
-and all the others node mouve up the chaine too in satck_a
+and all the others node mouve up the chaine too in stack_a
 rb ->first node is put at the end of the list, 2nd node takes first place 
-and all the others node mouve up the chaine too in satck_b
+and all the others node mouve up the chaine too in stack_b
 rr -> rr and rb at the same time
 
 reverse rotate rr
 rra -> last node is put at the begenning of the list,
-and all the others node mouve down the chaine too in satck_a
+and all the others node mouve down the chaine too in stack_a
 rrb -> last node is put at the begenning of the list,
-and all the others node mouve down the chaine too in satck_b
+and all the others node mouve down the chaine too in stack_b
 rrr -> rrr and rrb at the same time
 
 push :
-pa -> push first node of satck_b in satck_a
-pb -> push first node of satck_a in satck_b
+pa -> push first node of stack_b in stack_a
+pb -> push first node of stack_a in stack_b
 
 ex : 
-satck_a : 23  12 -4 56
-satck_b : 11 -60 -8 19
+stack_a : 23  12 -4 56
+stack_b : 11 -60 -8 19
 
 swap : 
-sa -> swap the first 2 nodes in satck_a (soit 23 et 12)  V
-sb -> swap the first 2 nodes in satck_b (soit 11 et -60)  V
-ss -> swap the first 2 nodes in satck_a et satck_b (soit sa et sb en mm tmps)  X
+sa -> swap the first 2 nodes in stack_a (soit 23 et 12)  V
+sb -> swap the first 2 nodes in stack_b (soit 11 et -60)  V
+ss -> swap the first 2 nodes in stack_a et stack_b (soit sa et sb en mm tmps)  X
 
 push :
-pa -> push first node of satck_b in satck_a  V
-pb -> push first node of satck_a in satck_b  V
+pa -> push first node of stack_b in stack_a  V
+pb -> push first node of stack_a in stack_b  V
 
 rotate :
 ra -> first node is put at the end of the list, 2nd node takes first place 
-and all the others node mouve up the chaine too in satck_a
+and all the others node mouve up the chaine too in stack_a
 rb ->first node is put at the end of the list, 2nd node takes first place 
-and all the others node mouve up the chaine too in satck_b
+and all the others node mouve up the chaine too in stack_b
 rr -> rr and rb at the same time
 
 
 reverse rotate rr
 rra -> last node is put at the begenning of the list,
-and all the others node mouve down the chaine too in satck_a
+and all the others node mouve down the chaine too in stack_a
 rrb -> last node is put at the begenning of the list,
-and all the others node mouve down the chaine too in satck_b
+and all the others node mouve down the chaine too in stack_b
 rrr -> rrr and rrb at the same time
 
 	ALGORITHME
@@ -121,9 +128,9 @@ un algo pour tout ce qui est strictemt sup a 5
 
 Le concept des chunks
 chunk = morceaux composee d'un certain nombre de nodes (exemple pour commencer, chunk de 10 nodes)
-Grace aux index, je cherche dans ma satck_a les nodes dont l'index est entre 0 et 10
-Si l'index du node lu est compris entre 0 et la taille du chunk, on l'envoie dans la satck_b
-Sinon on l'envoie a la fin de la satck_a
+Grace aux index, je cherche dans ma stack_a les nodes dont l'index est entre 0 et 10
+Si l'index du node lu est compris entre 0 et la taille du chunk, on l'envoie dans la stack_b
+Sinon on l'envoie a la fin de la stack_a
 
 Pour optimiser le trie je peux:
 
@@ -132,7 +139,7 @@ l'index d'intervalle    <= Premier intervalle des la plus petites valeur mis en 
 La 2e condition pourras push puis rotate (soit en fin de list) les nodes dont les index sont inferieur ou 
 egale a l'index d'intervalle + la taille du chunk    <= 2e trie des plus grandes valeur du chunk mis en bas
 
-.Incrementer l'index d'intervalle a chaque node push dans la satck_b
+.Incrementer l'index d'intervalle a chaque node push dans la stack_b
 Ca permet de faire evoluer les 2 intervalles au fur et a mesure de l'avancement du trie
 
 .Modifier le premier intervalle...
@@ -140,11 +147,11 @@ Dans la premiere condition modifier pour push tout les nodes inferieur ou egale 
 mais a l'index d'intervalle + la moitier de (l'index d'intervalle + la taille du chunk)
 De cette maniere les deux intervalles cites precedements font en fait la moitier de la taille totale des nodes regarde
 
-la satck_a a ete videe et la satck_b a ete remplie
-	maintenant je dois remplir la satck_a dans le bon ordre
+la stack_a a ete videe et la stack_b a ete remplie
+	maintenant je dois remplir la stack_a dans le bon ordre
 	
 	je vais push un par un les nodes de la b dans la a 
-	mais avant de push elle vas chercher le node que je souhaite push dans la satck_b
+	mais avant de push elle vas chercher le node que je souhaite push dans la stack_b
 	
 	pour ca j'ai une fonction qui:
 	compte le nb de node dans b 
@@ -173,7 +180,7 @@ j'ai besoin de parcourir la liste pour verifier qu'il n'y a pas de doublon
 	//je peux utiliser le buffer pour revenir au noeud au quel j'en etais 
 	//passer au noeud suivant et copier la value
 
-	fillsatck_a
+	fillstack_a
 	pushback la liste chainee en boucle avec av[i]
 	dans push back je creatnode et je atoi de av[i]
 	pour a la fin avoir une liste chainee qui contient des int bases sur les arg recu en input

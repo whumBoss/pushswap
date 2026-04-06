@@ -2,20 +2,16 @@
 NAME = push_swap
 
 # ===== Directories =====
-# LIBFT_DIR = libft/
 PRINTF_DIR = includes/ft_printf/
 OBJ_DIR = objs
 
 # ===== Libraries =====
-# LIBFT = $(LIBFT_DIR)libft.a
 PRINTF = $(PRINTF_DIR)libftprintf.a
 
 # ===== Toolchain =====
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-CPPFLAGS = -I. -Includes -Includes/ft_print -Ilibft -MMD -MP
-# CPPFLAGS = -I. -Includes... 
-
+CPPFLAGS = -I. -Includes -Includes/ft_print -MMD -MP
 
 # ===== Source Layout =====
 MAIN_DIR = src/
@@ -47,11 +43,8 @@ DEPS = $(OBJS:.o=.d)
 # ===== Build Rules =====
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(PRINTF) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(PRINTF) -o $(NAME)
-
-$(LIBFT):
-	@$(MAKE) -C $(LIBFT_DIR)
+$(NAME): $(PRINTF) $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) $(PRINTF) -o $(NAME)
 
 $(PRINTF):
 	@$(MAKE) -C $(PRINTF_DIR)
@@ -63,12 +56,10 @@ $(OBJ_DIR)/%.o: %.c
 # ===== Cleanup =====
 clean:
 	@rm -rf $(OBJ_DIR)
-#	@$(MAKE) clean -C $(LIBFT_DIR)
 	@$(MAKE) clean -C $(PRINTF_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
-#	@$(MAKE) fclean -C $(LIBFT_DIR)
 	@$(MAKE) fclean -C $(PRINTF_DIR)
 
 re: fclean all

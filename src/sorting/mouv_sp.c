@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 21:18:06 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/04/05 22:10:16 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/06 16:23:28 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	mv_swap(t_stack **stack, char *mouv_name)
 		ft_printf("%s\n", mouv_name);
 }
 
-void	mv_sswap(t_stack **satck_a, t_stack **satck_b)
+void	mv_sswap(t_stack **stack_a, t_stack **stack_b)
 {
-	mv_swap(satck_a, "\0");
-	mv_swap(satck_b, "\0");
+	mv_swap(stack_a, "\0");
+	mv_swap(stack_b, "\0");
 	ft_printf("ss\n");
 }
 

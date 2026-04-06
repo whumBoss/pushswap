@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 18:47:51 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/04/05 22:16:38 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/06 18:10:24 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,24 @@ int	find_node_position(t_stack *stack, int index)
 	return (-1);
 }
 
-void	find_biggest_node(t_stack **satck_b)
+void	find_biggest_node(t_stack **stack_b)
 {
 	int	biggest_index;
 	int	position;
 
-	if (!*satck_b || !(*satck_b)->next)
+	if (!*stack_b || !(*stack_b)->next)
 		return ;
-	biggest_index = count_nodes(*satck_b) - 1;
-	position = find_node_position(*satck_b, biggest_index);
+	biggest_index = count_nodes(*stack_b) - 1;
+	position = find_node_position(*stack_b, biggest_index);
 	if (position <= biggest_index / 2)
 	{
-		while ((*satck_b)->index != biggest_index)
-			mv_rotate(satck_b, "rb");
+		while ((*stack_b)->index != biggest_index)
+			mv_rotate(stack_b, "rb");
 	}
 	else if (position >= biggest_index / 2)
 	{
-		while ((*satck_b)->index != biggest_index)
-			mv_reverse_rotate(satck_b, "rrb");
+		while ((*stack_b)->index != biggest_index)
+			mv_reverse_rotate(stack_b, "rrb");
 	}
 }
 
@@ -61,32 +61,37 @@ int	chunk_size(int stack_size)
 	return (chunksize);
 }
 
-void	algo_over_five(t_stack **satck_a, t_stack **satck_b, int stack_size)
+void	sort_a_fill_b(t_stack **stack_a, t_stack **stack_b, int stack_size)
 {
 	int	i;
 	int	chunksize;
 
 	i = 0;
 	chunksize = chunk_size(stack_size);
-	while (*satck_a)
+	while (*stack_a)
 	{
-		if ((*satck_a)->index <= i)
+		if ((*stack_a)->index <= i)
 		{
-			mv_push(satck_a, satck_b, "pb");
+			mv_push(stack_a, stack_b, "pb");
 			i++;
 		}
-		else if (*satck_a && (*satck_a)->index <= i + chunksize)
+		else if (*stack_a && (*stack_a)->index <= i + chunksize)
 		{
-			mv_push(satck_a, satck_b, "pb");
-			mv_rotate(satck_b, "rb");
+			mv_push(stack_a, stack_b, "pb");
+			mv_rotate(stack_b, "rb");
 			i++;
 		}
-		if (*satck_a && (*satck_a)->next)
-			mv_rotate(satck_a, "ra");
+		else if (*stack_a && (*stack_a)->next)
+			mv_rotate(stack_a, "ra");
 	}
-	while (*satck_b)
+}
+
+void	algo_over_five(t_stack **stack_a, t_stack **stack_b, int stack_size)
+{
+	sort_a_fill_b(stack_a, stack_b, stack_size);
+	while (*stack_b)
 	{
-		find_biggest_node(satck_b);
-		mv_push(satck_b, satck_a, "pb");
+		find_biggest_node(stack_b);
+		mv_push(stack_b, stack_a, "pa");
 	}
 }

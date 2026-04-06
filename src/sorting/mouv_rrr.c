@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 21:18:29 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/04/05 22:12:48 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/06 16:23:28 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	mv_rotate(t_stack **stack, char *mouv_name)
 		ft_printf("%s\n", mouv_name);
 }
 
-void	mv_rr(t_stack **satck_a, t_stack **satck_b)
+void	mv_rr(t_stack **stack_a, t_stack **stack_b)
 {
-	mv_rotate(satck_a, "\0");
-	mv_rotate(satck_b, "\0");
+	mv_rotate(stack_a, "\0");
+	mv_rotate(stack_b, "\0");
 	ft_printf("rr\n");
 }
 
@@ -56,9 +56,9 @@ void	mv_reverse_rotate(t_stack **stack, char *mouv_name)
 		ft_printf("%s\n", mouv_name);
 }
 
-void	mv_rrr(t_stack **satck_a, t_stack **satck_b)
+void	mv_rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	mv_reverse_rotate(satck_a, "\0");
-	mv_reverse_rotate(satck_b, "\0");
+	mv_reverse_rotate(stack_a, "\0");
+	mv_reverse_rotate(stack_b, "\0");
 	ft_printf("rrr\n");
 }

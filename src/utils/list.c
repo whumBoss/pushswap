@@ -6,20 +6,20 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 17:34:07 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/04/05 22:17:59 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/06 16:42:41 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-int	size_list(t_stack *satck_a)
+int	size_list(t_stack *stack_a)
 {
 	int	size;
 
 	size = 0;
-	while (satck_a->next != NULL)
+	while (stack_a->next != NULL)
 	{
-		satck_a = satck_a->next;
+		stack_a = stack_a->next;
 		size++;
 	}
 	return (size);
@@ -31,7 +31,7 @@ t_stack	*create_node(char *arg)
 
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
-		return (print_error ("node allocation gone wrong"), NULL);
+		return (ft_printf("Error\n"), NULL);
 	new_node->index = 0;
 	new_node->value = atoi(arg);
 	new_node->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 18:46:28 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/02/15 17:12:09 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/06 16:11:04 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_putchar(char c)
 {
-	return (write(2, &c, 1));
+	return (write(1, &c, 1));
 }

@@ -6,7 +6,7 @@
 /*   By: wihumeau <wihumeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/05 21:39:44 by wihumeau          #+#    #+#             */
-/*   Updated: 2026/04/05 22:20:08 by wihumeau         ###   ########.fr       */
+/*   Updated: 2026/04/06 16:39:35 by wihumeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_stack
 }t_stack;
 
 //Main.c
-void	print_error(char *str);
 
 //Check.c
 int		check_input(char **av);
@@ -39,13 +38,13 @@ int		check_sign(char *arg);
 int		check_limits(char *arg);
 
 //Fill.c
-void	assign_index(t_stack **satck_a);
-int		verif_doublon(t_stack *satck_a);
-int		filling_stack(char **av, t_stack **satck_a);
-int		fillsatck_a(char **av, t_stack **satck_a);
+void	assign_index(t_stack **stack_a);
+int		verif_doublon(t_stack *stack_a);
+int		filling_stack(char **av, t_stack **stack_a);
+int		fillstack_a(char **av, t_stack **stack_a);
 
 //List.c
-int		size_list(t_stack *satck_a);
+int		size_list(t_stack *stack_a);
 t_stack	*create_node(char *arg);
 int		pushback(char *arg, t_stack **head);
 
@@ -56,34 +55,34 @@ long	ft_atoi(const char *str);
 char	**ft_split(char const *s, char c);
 
 //Free.c
-void	free_stack(t_stack **satck_a);
+void	free_stack(t_stack **stack_a);
 void	free_tab(char **tab);
 
 //Mouv_sp
 void	mv_swap(t_stack **stack, char *mouv_name);
-void	mv_sswap(t_stack **satck_a, t_stack **satck_b);
+void	mv_sswap(t_stack **stack_a, t_stack **stack_b);
 void	mv_push(t_stack **stack_origin, t_stack **stack_dest, char *mouv_name);
 
 //Mouv_rrr.c
 void	mv_rotate(t_stack **stack, char *mouv_name);
-void	mv_rr(t_stack **satck_a, t_stack **satck_b);
+void	mv_rr(t_stack **stack_a, t_stack **stack_b);
 void	mv_reverse_rotate(t_stack **stack, char *mouv_name);
-void	mv_rrr(t_stack **satck_a, t_stack **satck_b);
+void	mv_rrr(t_stack **stack_a, t_stack **stack_b);
 
 //Small_algo.c
-void	which_algo(t_stack **satck_a, t_stack **satck_b);
+void	which_algo(t_stack **stack_a, t_stack **stack_b);
 int		count_nodes(t_stack *stack);
-void	algo_two_nodes(t_stack **satck_a);
-void	algo_three_nodes(t_stack **satck_a);
-void	algo_four_five_nodes(t_stack **satck_a, t_stack **satck_b);
+void	algo_two_nodes(t_stack **stack_a);
+void	algo_three_nodes(t_stack **stack_a);
+void	algo_four_five_nodes(t_stack **stack_a, t_stack **stack_b);
 
 //Big_algo.c
 int		find_node_position(t_stack *stack, int index);
-void	find_biggest_node(t_stack **satck_b);
+void	find_biggest_node(t_stack **stack_b);
 int		chunk_size(int stack_size);
-void	algo_over_five(t_stack **satck_a, t_stack **satck_b, int list_size);
+void	algo_over_five(t_stack **stack_a, t_stack **stack_b, int list_size);
 
 //Test.c
-void	print_stack(t_stack *satck_a);
+void	print_stack(t_stack *stack_a);
 
 #endif
